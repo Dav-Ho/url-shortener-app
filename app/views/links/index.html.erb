@@ -1,0 +1,17 @@
+<h3>This is the index page</h3>
+
+<table>
+  <tr>
+    <th>Slug</th>
+    <th>Target URL</th>
+    <th>Created At</th>
+    <th>Action</th>
+  </tr>
+  <% @links.each do |link| %>
+     <tr>
+       <td><%= link_to link.slug, link_path(link.id), :class => "block-link" %></td>
+       <td><%= link_to link.target_url, link_path(link.id), :class => "block-link" %></td>
+       <td><%= link_to link.created_at, link_path(link.id), :class => "block-link" %></td>
+       <td><%= link_to "Edit", edit_link_path(link.id) %> <%= link_to "Delete", link_path(link.id), :method => "delete", :data => {:confirm => "Are you sure you would like to delete the link: #{link.slug}?"} %></td>
+     </tr>
+   <% end %>
